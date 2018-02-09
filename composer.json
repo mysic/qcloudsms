@@ -1,0 +1,15 @@
+{
+    "name":"mysic/qcloudsms",
+    "description":"mysic/qcloudsms",
+    "type":"package",
+    "keyword":["qcloudsms","qcloud"],
+    "author":[
+        {
+            "name":"mysic",
+            "role":"develop"
+        }
+    ],
+    "require":{
+        "qcloudsms/qcloudsms_php": "*"
+    }
+}
