@@ -11,5 +11,8 @@
     ],
     "require":{
         "qcloudsms/qcloudsms_php": "*"
+    },
+    "autoload":{
+        "psr-4":{"Sms\\":"src/"}
     }
 }
