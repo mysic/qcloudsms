@@ -7,7 +7,7 @@
  * Time: 9:41
  */
 
- require_once '../../../vendor/autoload.php';
+require_once '../../../vendor/autoload.php';
 
 $sender = Processor::getInstance();
 
