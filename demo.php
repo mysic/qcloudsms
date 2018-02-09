@@ -7,7 +7,9 @@
  * Time: 9:41
  */
 
-require_once '../../../vendor/autoload.php';
+require_once 'vendor/autoload.php';
+
+use Sms\Processor;
 
 $sender = Processor::getInstance();
 
