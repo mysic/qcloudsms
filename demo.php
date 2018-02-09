@@ -415,14 +415,14 @@ try{
      * {"result":60008,"errmsg":"service timeout or request format error,please check and try again"}
      */
 
-//            $sendType = 'replyStat';
-//
-//            $args = [
-//                'appid' => 1400066726,
-//                'appkey' => '2e96d793d242b15ca2e968e4f9fb9431',
-//                'beginDate' => 2018013000,
-//                'endDate' => 2018020623
-//            ];
-//
-//            $sender->init($sendType, $args);
-//            echo $sender->execute();
+           $sendType = 'replyStat';
+
+           $args = [
+               'appid' => $appid,
+               'appkey' => $appkey,
+               'beginDate' => 2018013000,
+               'endDate' => 2018020623
+           ];
+
+           $sender->init($sendType, $args);
+           echo $sender->execute();
