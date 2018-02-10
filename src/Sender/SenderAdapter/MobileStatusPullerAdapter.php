@@ -8,10 +8,9 @@
 
 namespace Sms\Sender\SenderAdapter;
 
-use Sms\Sender\SmsBase;
 use Qcloud\Sms\SmsMobileStatusPuller;
 
-class MobileStatusPullerAdapter extends SmsBase
+class MobileStatusPullerAdapter extends AdapterBase
 {
 
     public function __construct()

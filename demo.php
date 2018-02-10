@@ -21,51 +21,51 @@ try{
 /**
  * smsSingleSender 单发短信   （普通发送 | 指定模板发送）
  *
- * int appid
- * string appkey
- * int type 0 普通短信 1 营销短信
- * string nationCode 国家码
- * array templData array('templId','params'=>array()) | string msg 模板ID（指定消息模板）| 消息正文
- * array params 模板数据 （指定模板发送）
- * string phoneNumber 接收手机号
- * string sign 短信内容签名 此参数可为空，系统会用默认签名
- * [string extend ]
- * [string ext ]
+ * @param int appid
+ * @param string appkey
+ * @param int type 0 普通短信 1 营销短信
+ * @param string nationCode 国家码
+ * @param array templData array('templId','params'=>array()) | string msg 模板ID（指定消息模板）| 消息正文
+ * @param array params 模板数据 （指定模板发送）
+ * @param string phoneNumber 接收手机号
+ * @param string sign 短信内容签名 此参数可为空，系统会用默认签j名
+ * @param string extend
+ * @param string ext
  *
  * @Notice templId和msg都有值时，优先调用指定模板发送接口。
  */
-    $sendType = 'smsSingleSender';
+//     $sendType = 'smsSingleSender';
 
-    $args = [
-        'appid' => $appid,
-        'appkey' => $appkey,
-        'type' => 0,
-        'nationCode' => '86',
-        'templData' => [
-//                    'templId' => 83729,
-//                    'params' =>['9527', '5'],
-        ],
-//                'sign'=> 'MYSIC',
-        'phoneNumber' => '18888888888',
-        'msg' => '8888为您的登录验证码，请于2分钟内填写。如非本人操作，请忽略本短信。'
-    ];
+//     $args = [
+//         'appid' => $appid,
+//         'appkey' => $appkey,
+//         'type' => 0,
+//         'nationCode' => '86',
+//         'templData' => [
+// //                    'templId' => 83729,
+// //                    'params' =>['9527', '5'],
+//         ],
+// //                'sign'=> 'MYSIC',
+//         'phoneNumber' => '18888888888',
+//         'msg' => '8888为您的登录验证码，请于2分钟内填写。如非本人操作，请忽略本短信。'
+//     ];
 
-    $sender->init($sendType, $args);
-    echo $sender->execute();
+    // $sender->init($sendType, $args);
+    // echo $sender->execute();
 
 /**
  * smsMultiSender 群发短信   普通群发 指定模板群发
  *
- * int appid
- * string appkey
- * int type 0 普通短信 1 营销短信
- * string nationCode 国家码
- * array templData array('templId','params'=>array()) | string msg  模板ID（指定消息模板）| 消息正文
- * array params 模板数据 （指定模板发送）
- * array phoneNumber 多个接收手机号
- * string sign 短信内容签名 此参数可为空，系统会用默认签名
- * [string extend ]
- * [string ext ]
+ * @param int appid
+ * @param string appkey
+ * @param int type 0 普通短信 1 营销短信
+ * @param string nationCode 国家码
+ * @param array templData array('templId','params'=>array()) | string msg  模板ID（指定消息模板）| 消息正文
+ * @param array params 模板数据 （指定模板发送）
+ * @param array phoneNumber 多个接收手机号
+ * @param string sign 短信内容签名 此参数可为空，系统会用默认签名
+ * @param string extend
+ * @param string ext
  *
  * @Notice templId和msg都有值时，优先调用指定模板发送接口。
  */
@@ -92,13 +92,13 @@ try{
 /**
  * smsVoiceVerifyCodeSender 语音验证码
  *
- * int appid
- * string appkey
- * string nationCode 国家码
- * string phoneNumber 接收手机号
- * string msg 消息正文
- * int playTimes 播放次数
- * [string ext ]
+ * @param int appid
+ * @param string appkey
+ * @param string nationCode 国家码
+ * @param string phoneNumber 接收手机号
+ * @param string msg 消息正文
+ * @param int playTimes 播放次数
+ * @param string ext
  *
  */
 
@@ -119,14 +119,14 @@ try{
 /**
  * smsVoicePromptSender 语音通知
  *
- * int appid
- * string appkey
- * string nationCode 国家码
- * string phoneNumber 接收手机号
- * int promptType 语音提示类型，目前固定为2
- * int playTimes 播放次数
- * string mgs 消息正文，必须与申请的模板格式一致，否则将返回错误
- * [string ext ]
+ * @param int appid
+ * @param string appkey
+ * @param string nationCode 国家码
+ * @param string phoneNumber 接收手机号
+ * @param int promptType 语音提示类型，目前固定为2
+ * @param int playTimes 播放次数
+ * @param string mgs 消息正文，必须与申请的模板格式一致，否则将返回错误
+ * @param string ext
  *
  */
 
@@ -149,10 +149,10 @@ try{
 /**
  * smsStatusPuller 拉取短信状态
  *
- * int appid
- * string appkey
- * int type  拉取类型，0表示回执结果，1表示回复信息
- * int max  最大条数，最多100
+ * @param int appid
+ * @param string appkey
+ * @param int type  拉取类型，0表示回执结果，1表示回复信息
+ * @param int max  最大条数，最多100
  *
  */
 
@@ -171,13 +171,14 @@ try{
 /**
  * smsMobileStatusPuller 拉取单个手机短信状态
  *
- * int appid
- * string appkey
- * string nationCode 国家码
- * string phoneNumber 手机号
- * int beginTime 开始时间(unix timestamp)
- * int endTime 结束时间(unix timestamp)
- * int max 拉取最大条数，最多100
+ * @param int appid
+ * @param tring appkey
+ * @param int    $type         拉取类型，0表示回执结果，1表示回复信息
+ * @param string nationCode 国家码
+ * @param string phoneNumber 手机号
+ * @param int beginTime 开始时间(unix timestamp)
+ * @param int endTime 结束时间(unix timestamp)
+ * @param int max 拉取最大条数，最多100
  */
 
     // $sendType = 'smsMobileStatusPuller';
@@ -204,12 +205,12 @@ try{
 /**
  * addTemplate 添加模板
  *
- * int appid
- * string appkey
- * string title 模板标题
- * string text 模板内容
- * int type 模板类型 0 普通短信 1 营销短信
- * string remark 备注
+ * @param int appid
+ * @param string appkey
+ * @param string title 模板标题
+ * @param string text 模板内容
+ * @param int type 模板类型 0 普通短信 1 营销短信
+ * @param string remark 备注
  */
 
     // $sendType = 'addTemplate';
@@ -229,13 +230,13 @@ try{
 /**
  * modTemplate 修改模板
  *
- * int appid
- * string appkey
- * string title 模板标题
- * string text 模板内容
- * string type 模板类型 0 普通短信 1 营销短信
- * string remark 备注
- * int tplId 要修改的模板ID
+ * @param int appid
+ * @param string appkey
+ * @param string title 模板标题
+ * @param string text 模板内容
+ * @param string type 模板类型 0 普通短信 1 营销短信
+ * @param string remark 备注
+ * @param int tplId 要修改的模板ID
  */
     // $sendType = 'modTemplate';
 
@@ -255,9 +256,9 @@ try{
 /**
  * delTemplate 删除模板
  *
- * int appid
- * string appkey
- * array tplId 要删除的模板ID数组
+ * @param int appid
+ * @param string appkey
+ * @param array tplId 要删除的模板ID数组
  */
 
     // $sendType = 'delTemplate';
@@ -274,9 +275,9 @@ try{
 /**
  * statusTemplate 短信模板状态查询
  *
- * int appid
- * string appkey
- * mixed params （array）模板ID数组 | (object) 分页 max 每页最大数 offset 页码偏移量
+ * @param int appid
+ * @param string appkey
+ * @param mixed params （array）模板ID数组 | (object) 分页 max 每页最大数 offset 页码偏移量
  */
 
 //     $sendType = 'statusTemplate';
@@ -301,11 +302,11 @@ try{
 /**
  * AddSign 添加签名
  *
- * int appid
- * string appkey
- * string text 签名内容
- * string pic 证件资料图片的base64字符串
- * string remark 备注
+ * @param int appid
+ * @param string appkey
+ * @param string text 签名内容
+ * @param string pic 证件资料图片的base64字符串
+ * @param string remark 备注
  */
 
     // $sendType = 'addSign';
@@ -325,12 +326,12 @@ try{
 /**
  * ModSign 修改签名
  *
- * int appid
- * string appkey
- * int signId 签名模板ID
- * string text 签名内容
- * string pic 证件资料图片的base64字符串
- * string remark 备注
+ * @param int appid
+ * @param string appkey
+ * @param int signId 签名模板ID
+ * @param string text 签名内容
+ * @param string pic 证件资料图片的base64字符串
+ * @param string remark 备注
  */
 
     // $sendType = 'modSign';
@@ -351,9 +352,9 @@ try{
 /**
  * DelSign 删除签名
  *
- * int appid
- * string appkey
- * array signId 签名模板ID数组
+ * @param int appid
+ * @param string appkey
+ * @param array signId 签名模板ID数组
  */
 
     // $sendType = 'delSign';
@@ -370,9 +371,9 @@ try{
 /**
  * StatusSign 签名状态查询
  *
- * int appid
- * string appkey
- * array signId 签名模板ID数组
+ * @param int appid
+ * @param string appkey
+ * @param array signId 签名模板ID数组
  */
 
     // $sendType = 'statusSign';
@@ -389,10 +390,10 @@ try{
 /**
  * SendStat 发送数据统计
  *
- * int appid
- * string appkey
- * int beginDate 开始时间 yyyymmddhh 需要拉取的起始时间,精确到小时
- * int endDate 结束时间 yyyymmddhh 需要拉取的起始时间,精确到小时
+ * @param int appid
+ * @param string appkey
+ * @param int beginDate 开始时间 yyyymmddhh 需要拉取的起始时间,精确到小时
+ * @param int endDate 结束时间 yyyymmddhh 需要拉取的起始时间,精确到小时
  */
 
     // $sendType = 'sendStat';
@@ -410,10 +411,10 @@ try{
 /**
  * ReplyStat 回执数据统计
  *
- * int appid
- * string appkey
- * int beginDate 开始时间 yyyymmddhh 需要拉取的起始时间,精确到小时
- * int endDate 结束时间 yyyymmddhh 需要拉取的起始时间,精确到小时
+ * @param int appid
+ * @param string appkey
+ * @param int beginDate 开始时间 yyyymmddhh 需要拉取的起始时间,精确到小时
+ * @param int endDate 结束时间 yyyymmddhh 需要拉取的起始时间,精确到小时
  *
  * 此接口测试时一直报错如下：
  * {"result":60008,"errmsg":"service timeout or request format error,please check and try again"}
