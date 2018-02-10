@@ -173,7 +173,7 @@ try{
  *
  * @param int appid
  * @param tring appkey
- * @param int    $type         拉取类型，0表示回执结果，1表示回复信息
+ * @param int $type  拉取类型，0表示回执结果，1表示回复信息
  * @param string nationCode 国家码
  * @param string phoneNumber 手机号
  * @param int beginTime 开始时间(unix timestamp)

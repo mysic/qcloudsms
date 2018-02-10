@@ -33,6 +33,19 @@ class StatusPullerAdapter extends AdapterBase
 
     public function send()
     {
+        $instance = $this->init(SmsStatusPuller::class);
+        $methodName = '';  
+        switch ($this->type) {
+            case 0:
+                $methodName = 'pullCallback';
+                break;
+            case 1:
+                $methodName = 'pullReply';
+                break;
 
+            default:
+                $methodName = 'pullCallback';
+        }
+        return $instance->{$methodName}($this->type, $this->max);
     }
 }
