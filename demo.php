@@ -32,7 +32,7 @@ try{
  * @param string extend
  * @param string ext
  *
- * @Notice templId和msg都有值时，优先调用指定模板发送接口。
+ * @Notice templData和msg都有值时，优先调用指定模板发送接口。
  */
 //     $sendType = 'smsSingleSender';
 
@@ -67,7 +67,7 @@ try{
  * @param string extend
  * @param string ext
  *
- * @Notice templId和msg都有值时，优先调用指定模板发送接口。
+ * @Notice templData和msg都有值时，优先调用指定模板发送接口。
  */
 
     // $sendType = 'smsMultiSender';
