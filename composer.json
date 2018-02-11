@@ -2,6 +2,7 @@
     "name":"mysic/qcloudsms",
     "description":"mysic/qcloudsms",
     "keyword":["qcloudsms","qcloud"],
+    "type":"library",
     "author":[
         {
             "name":"mysic",
