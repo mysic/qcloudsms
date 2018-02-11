@@ -60,7 +60,7 @@ try{
  * @param string appkey
  * @param int type 0 普通短信 1 营销短信
  * @param string nationCode 国家码
- * @param array templData array('templId','params'=>array()) 模板ID（指定消息模板） | string msg 消息正文
+ * @param array templData array('templId','params'=>array()) 模板ID（指定消息模板）| string msg 消息正文
  * @param array params 模板数据 （指定模板发送）
  * @param array phoneNumber 多个接收手机号
  * @param string sign 短信内容签名 此参数可为空，系统会用默认签名
