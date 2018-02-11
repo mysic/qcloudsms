@@ -25,7 +25,7 @@ try{
  * @param string appkey
  * @param int type 0 普通短信 1 营销短信
  * @param string nationCode 国家码
- * @param array templData array('templId','params'=>array()) | string msg 模板ID（指定消息模板）| 消息正文
+ * @param array templData array('templId','params'=>array()) 模板ID（指定消息模板） | string msg  消息正文
  * @param array params 模板数据 （指定模板发送）
  * @param string phoneNumber 接收手机号
  * @param string sign 短信内容签名 此参数可为空，系统会用默认签j名
@@ -60,7 +60,7 @@ try{
  * @param string appkey
  * @param int type 0 普通短信 1 营销短信
  * @param string nationCode 国家码
- * @param array templData array('templId','params'=>array()) | string msg  模板ID（指定消息模板）| 消息正文
+ * @param array templData array('templId','params'=>array()) 模板ID（指定消息模板） | string msg 消息正文
  * @param array params 模板数据 （指定模板发送）
  * @param array phoneNumber 多个接收手机号
  * @param string sign 短信内容签名 此参数可为空，系统会用默认签名
@@ -243,7 +243,7 @@ try{
     // $args = [
     //     'appid' => $appid,
     //     'appkey' => $appkey,
-    //     'title' => '添加模板API测试',
+    //     'title' => '修改模板API测试',
     //     'text' => '您好{1}，这里是修改模板API测试，模板ID{2}已修改，请留意审核结果',
     //     'type' => 0,
     //     'remark' => '腾讯云短信接口调用测试',
@@ -310,7 +310,7 @@ try{
  */
 
     // $sendType = 'addSign';
-    // $picFile = \base64_encode(\file_get_contents('public/static/image/youzhibo.jpg'));
+    // $picFile = \base64_encode(\file_get_contents('public/static/image/hello.jpg'));
 
     // $args = [
     //     'appid' => $appid,
@@ -335,7 +335,7 @@ try{
  */
 
     // $sendType = 'modSign';
-    // $picFile = \base64_encode(\file_get_contents('public/static/image/youzhibo.jpg'));
+    // $picFile = \base64_encode(\file_get_contents('public/static/image/hello.jpg'));
 
     // $args = [
     //     'appid' => $appid,
