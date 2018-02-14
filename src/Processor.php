@@ -14,11 +14,8 @@ class Processor
 {
     private static $instance = null;
     private $senderReflections = [];
-    private $senderMethods = [];
-    private $senderArgs = [];
     private $senderInstance = [];
     private $type = '';
-    private $args = [];
 
     private function __clone(){}
     private function __construct(){}
@@ -33,59 +30,52 @@ class Processor
 
     public function init($type, array $args = [])
     {
-        $this->type = $type;
-        $this->args = $args;
+        $this->type = $type; 
         if (!array_key_exists($type, $this->senderReflections)) {
             $this->senderReflections[$type] = SenderFactory::getInstance($type);
         }
-        if (!\array_key_exists($this->type, $this->senderInstance)) {
-            $this->senderInstance[$this->type] = $this->senderReflections[$this->type]->newInstance();
+        if (!\array_key_exists($type, $this->senderInstance)) {
+            $this->senderInstance[$type] = $this->senderReflections[$type]->newInstance();
         }
-        $this->getMethods($this->senderReflections[$type]);
-
+        $senderMethodArgs = $this->getSenderMethodArgs($this->senderReflections[$type]);
         $methodArgs = [];
-        foreach ($this->senderArgs as $senderMethod => $senderMethodArgs) {
-            if (!empty($this->args[$senderMethodArgs])) {
-                $methodArgs[$senderMethod] = $this->args[$senderMethodArgs];
-            } else {
-                $methodArgs[$senderMethod] ='';
-            }
+        foreach ($senderMethodArgs as $senderMethod => $methodArgument) {
+            $argName = $methodArgument->getName();
+            if (isset($args[$argName])) {
+                $methodArgs[$senderMethod] = $args[$argName];
+            } 
         }
-
-        $instance = $this->senderInstance[$this->type];
-        foreach ($this->senderMethods as $method) {
-            $argValue = $this->args[$this->senderArgs[$method]];
-            \call_user_func([$instance, $method], $argValue);
+        foreach ($methodArgs as $methodName => $argValue) {        
+            \call_user_func([$this->senderInstance[$type], $methodName], $argValue);
         }
     }
 
     public function execute()
     {
-        if (empty($this->senderArgs)) {
+        if (empty($this->senderInstance[$this->type])) {
             throw new \Exception('need run init() first');
         }
-
-        $instance = $this->senderInstance[$this->type];
-        return $instance->send();
+        return $this->senderInstance[$this->type]->send();
     }
 
-    private function getMethods(\ReflectionClass $reflection)
+    private function getSenderMethodArgs(\ReflectionClass $reflection)
     {
-        $arr = [];
+        $methods = [];
         $senderMethods = $reflection->getMethods();
         foreach($senderMethods as $method) {
             $name = $method->getName();
             if (strstr($name, 'set')) {
-                $this->senderMethods[] =  $method->getName();
+                $methods[] =  $method;
             }
         }
 
-        foreach ($senderMethods as $method) {
-            $this->senderArgs[$method->getName()] = $method->getParameters();
-            foreach ($this->senderArgs[$method->getName()] as $paramObj) {
-                $arr[$method->getName()] = $paramObj->getName();
+        $arr = [];
+        foreach ($methods as $method) { 
+            $args = $method->getParameters();
+            foreach ($args as $paramObj) {
+                $arr[$method->getName()] = $paramObj;
             }
         }
-        $this->senderArgs = $arr;
+        return $arr;
     }
 }
