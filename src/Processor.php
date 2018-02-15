@@ -42,11 +42,8 @@ class Processor
         foreach ($senderMethodArgs as $senderMethod => $methodArgument) {
             $argName = $methodArgument->getName();
             if (isset($args[$argName])) {
-                $methodArgs[$senderMethod] = $args[$argName];
+                \call_user_func([$this->senderInstance[$type], $senderMethod], $args[$argName]);
             } 
-        }
-        foreach ($methodArgs as $methodName => $argValue) {        
-            \call_user_func([$this->senderInstance[$type], $methodName], $argValue);
         }
     }
 
@@ -62,7 +59,7 @@ class Processor
     {
         $methods = [];
         $senderMethods = $reflection->getMethods();
-        foreach($senderMethods as $method) {
+        foreach ($senderMethods as $method) {
             $name = $method->getName();
             if (strstr($name, 'set')) {
                 $methods[] =  $method;
