@@ -38,7 +38,6 @@ class Processor
             $this->senderInstance[$type] = $this->senderReflections[$type]->newInstance();
         }
         $senderMethodArgs = $this->getSenderMethodArgs($this->senderReflections[$type]);
-        $methodArgs = [];
         foreach ($senderMethodArgs as $senderMethod => $methodArgument) {
             $argName = $methodArgument->getName();
             if (isset($args[$argName])) {
